@@ -1,0 +1,133 @@
+/* Встановлення загального стилю відповідно до естетики зображень */
+
+:root {
+    /* Кольори, натхненні фоном та підсвічуванням на зображеннях */
+    --color-background-body: #F4E8C2; /* Світлий, теплий тон підлоги/поверхні */
+    --color-background-main: #FFFFFF; /* Трохи світліший, нейтральний фон для галереї */
+    --color-header-footer: #968F4B; /* Гірчичний/оливковий відтінок меблів */
+    --color-text-dark: #333333; /* Темний текст для контрасту */
+    --color-accent-light: #5A5A5A; /* Колір рамки панелі */
+    --color-shadow-light: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif; /* Чистий, сучасний шрифт */
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    background-color: var(--color-background-body);
+    padding: 10px; /* Зменшуємо загальний padding для мобільних пристроїв */
+    text-align: center;
+}
+
+header, footer {
+    background-color: var(--color-header-footer);
+    color: var(--color-background-main);
+    padding: 15px 10px; /* Зменшуємо padding */
+    margin-bottom: 15px; /* Зменшуємо відступ */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--color-shadow-light);
+}
+
+h1 {
+    font-size: 1.8em; /* Зменшуємо розмір для мобільних пристроїв */
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    color: var(--color-accent-light);
+    font-size: 1.3em; /* Зменшуємо розмір */
+    margin-bottom: 0.5rem;
+}
+
+/* Стиль контейнера галереї */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Зменшуємо проміжок */
+    padding: 10px 0;
+}
+
+/* Стиль окремої картки зображення */
+.image-card {
+    background-color: var(--color-background-main);
+    border: 1px solid var(--color-accent-light);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%; /* Картка займає 100% ширини на мобільному */
+    max-width: 450px; /* Обмеження ширини для мобільних (понад 450px вже як планшет) */
+    box-shadow: 0 4px 8px var(--color-shadow-light); /* Зменшуємо тінь */
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-card:hover {
+    transform: none; /* Вимикаємо анімацію при наведенні, що не завжди працює на тач-екранах */
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 1px solid var(--color-accent-light);
+}
+
+.description {
+    padding: 15px;
+    text-align: left;
+}
+
+.description p {
+    font-size: 0.9em;
+    color: var(--color-text-dark);
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 0.75em; /* Зменшуємо розмір футера */
+}
+
+/* -------------------------------------------------------------------------- */
+/* МЕДІА-ЗАПИТИ ДЛЯ АДАПТИВНОГО ДИЗАЙНУ (Responsive Design)    */
+/* -------------------------------------------------------------------------- */
+
+/* Стилі для ПЛАНШЕТІВ (ширина від 600px до 1023px) */
+@media (min-width: 600px) {
+    body {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    .gallery-container {
+        gap: 20px;
+        padding: 20px 0;
+    }
+    .image-card {
+        width: calc(50% - 10px); /* Дві картки в ряд */
+    }
+    .image-card:hover {
+        transform: translateY(-5px); /* Повертаємо анімацію */
+    }
+}
+
+
+/* Стилі для ВЕЛИКИХ ЕКРАНІВ / ДЕСКТОПІВ (ширина від 1024px) */
+@media (min-width: 1024px) {
+    h1 {
+        font-size: 2.5em;
+    }
+    .gallery-container {
+        gap: 30px;
+        padding: 30px 50px;
+    }
+    .image-card {
+        width: calc(33.333% - 20px); /* Три картки в ряд */
+        max-width: 380px; /* Обмеження ширини */
+    }
+}
